@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  mysql-horizon:
+    image: bielnogueira22/mysql-cogniflow
+    container_name: mysql-cogniflow
+    environment:
+      MYSQL_ROOT_PASSWORD: senhaRoot
+      MYSQL_DATABASE: cogniflow
+      MYSQL_USER: cogniflow
+      MYSQL_PASSWORD: urubu100
+    ports:
+      - "3306:3306"
+    networks:
+      - redeCogniflow
+    volumes:
+      - ./init-db:/docker-entrypoint-initdb.d
+
+  node-horizon:
+    image: bielnogueira22/node:latest
+    container_name: node
+    build:
+      context: ./Cogniflow-Frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - redeCogniflow
+    depends_on:
+      - mysql-cogniflow
