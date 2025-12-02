@@ -8,14 +8,14 @@ services:
     container_name: react-app1
     restart: unless-stopped
 
-  app2:
-    build:
-      context: ./Cogniflow-Front-Copy/CogniFlow-Front/mega-plate
-      dockerfile: Dockerfile
-    ports:
-      - "3002:80"
-    container_name: react-app2
-    restart: unless-stopped
+  # app2:
+  #   build:
+  #     context: ./Cogniflow-Front-Copy/CogniFlow-Front/mega-plate
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "3002:80"
+  #   container_name: react-app2
+  #   restart: unless-stopped
 
   nginx-proxy:
     image: nginx:alpine
